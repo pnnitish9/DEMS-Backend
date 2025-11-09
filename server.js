@@ -18,11 +18,10 @@ const app = express();
 const server = http.createServer(app);
 
 const PORT = Number(process.env.PORT || 4000);
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:5173";
 
 // Middleware
 app.use(cors({
-  origin: CLIENT_ORIGIN === "*" ? true : CLIENT_ORIGIN,
+  origin: true,
   credentials: true,
 }));
 app.use(express.json());
@@ -54,6 +53,4 @@ app.use("/api/notifications", notificationRoutes);
 // Start server
 server.listen(PORT, () => {
   console.log(`🚀 Server with Socket.IO running at http://localhost:${PORT}`);
-  console.log(`🔌 Socket.IO path: /socket.io`);
-  console.log(`🌐 CORS allowed origin: ${CLIENT_ORIGIN}`);
 });
