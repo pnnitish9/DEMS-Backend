@@ -22,7 +22,7 @@ const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:5173";
 
 // Middleware
 app.use(cors({
-  origin: CLIENT_ORIGIN === "*" ? true : CLIENT_ORIGIN,
+  origin: CLIENT_ORIGIN,
   credentials: true,
 }));
 app.use(express.json());
